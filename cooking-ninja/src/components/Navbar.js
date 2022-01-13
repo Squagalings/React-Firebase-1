@@ -12,7 +12,6 @@ export default function Navbar() {
         </Link>
         <Link to="/create">Create Recipe</Link>
       </nav>
-      
     </div>
   )
 }
