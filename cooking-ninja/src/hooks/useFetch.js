@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export const useFetch = ({url, method = "GET"}) => {
+export const useFetch = (url, method = "GET") => {
   const [data, setData] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
@@ -10,8 +10,7 @@ export const useFetch = ({url, method = "GET"}) => {
     setOptions({
       method: "POST",
       headers: {
-
-        "Content Type":"application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(postData)
     })
@@ -43,6 +42,7 @@ export const useFetch = ({url, method = "GET"}) => {
       }
     }
 
+    // invoke the function
     if (method === "GET") {
       fetchData()
     }
@@ -50,13 +50,11 @@ export const useFetch = ({url, method = "GET"}) => {
       fetchData(options)
     }
 
-    fetchData()
-
     return () => {
       controller.abort()
     }
 
-  }, [url, options, method])
+  }, [url, method, options])
 
   return { data, isPending, error, postData }
 }
